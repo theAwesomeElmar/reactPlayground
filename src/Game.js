@@ -44,11 +44,11 @@ class Game extends React.Component {
         const winner = Utils.calculateWinner(current.squares);
 
         const moves = history.map((step, move, history) => {
-            let location;
             let desc;
             if (move) {
-                location = Utils.currentHistoryMove(step.squares, history[move-1].squares);
-                desc = 'Go to move #' + move + ' ('+location.col+','+location.row+')';
+                const location = Utils.currentHistoryMove(step.squares, history[move-1].squares);
+                const playerSymbol = move % 2 ? 'X' : 'O'
+                desc = 'Go to move #' + move + ' ' + playerSymbol + '('+location.col+','+location.row+')';
             } else {
                 desc = 'Go to game start';
             }
