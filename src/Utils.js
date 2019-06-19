@@ -17,3 +17,16 @@ export function calculateWinner(squares) {
     }
     return null;
 }
+
+export function currentHistoryMove(currentHistory, previousHistory) {
+    let index;
+    const tictactoeLength = currentHistory.length;
+
+    for(index = 0; index < tictactoeLength; index++) {
+        if(currentHistory[index] !== previousHistory[index]) break;
+    }
+
+    const row = (index % 3) + 1;
+    const col = Math.ceil((index + 1)/3);
+    return {col, row};
+}
